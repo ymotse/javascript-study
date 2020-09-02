@@ -2,10 +2,10 @@
 
 <ul class="tree">
     <li>
-        Backend
+        <span wm-folder>Backend</span>
         <ul>
             <li>
-                app
+                <span wm-folder>app</span>
                 <ul>
                     <li>produto.js</li>
                     <li>usuario.js</li>
@@ -13,7 +13,7 @@
                 </ul>
             </li>
             <li>
-                config
+                <span wm-folder>config</span>
                 <ul>
                     <li>banco.js</li>
                     <li>rotas.js</li>
@@ -23,10 +23,10 @@
         </ul>
     </li>
     <li>
-        Frontend
+        <span wm-folder>Frontend</span>
         <ul>
             <li>
-                public
+                <span wm-folder>public</span>
                 <ul>
                     <li>app.css</li>
                     <li>app.js</li>
@@ -37,4 +37,14 @@
     </li>
 </ul>
 
-<link rel="stylesheet" href="tree.css">
+<link rel="stylesheet" href="../tree.css">
+
+<script>
+    document.querySelectorAll('[wm-folder]').forEach(folder => {
+        folder.onclick = function(e) {
+            const ul = folder.nextElementSibling
+            const displayAtual = ul.style.display
+            ul.style.display = displayAtual === 'none' ? 'block' : 'none'
+        }
+    })
+</script>
