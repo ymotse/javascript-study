@@ -5,3 +5,13 @@
     padding: 10px;
     background-color: #444;
 }
+
+#conteudo {
+    padding: 10px 0px;
+}
+
+footer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
