@@ -1,6 +1,6 @@
 <h1>Formulário</h1>
 
-<form action="http://localhost:3003/usuarios" method="POST">
+<form method="POST">
     <input type="text" name="nome">
     <input type="password" name="senha">
     <textarea name="bio" cols="30" rows="10"></textarea>
@@ -15,7 +15,7 @@
         <input type="checkbox" name="ativo"> Ativo
     </div>
     
-    <select>
+    <select name="estado">
         <option value="">Selecione</option>
         <option value="AC">Acre</option>
         <option value="BA">Bahia</option>
@@ -31,7 +31,8 @@
         <option value="c"> C </option>
     </select>
     
-    <button>Incluir</button>
+    <button formaction="http://localhost:3003/usuarios" formmethod="POST">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3" formmethod="POST">Alterar</button>
 </form>
 
 <style>
