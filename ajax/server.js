@@ -1,6 +1,11 @@
 const bodyParser = require('body-parser')
 const express = require('express')
+var cors = require('cors')
 const app = express()
+
+app.use(cors({
+    origin: '*'
+  }))
 
 app.use(express.static('.'))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -34,6 +39,13 @@ app.post('/formulario', (req, res) => {
     res.send({
         ...req.body,
         id: Date.now()
+    })
+})
+
+app.get('/parOuImpar', (req, res) => {
+    const par = parseInt(req.query.numero) % 2 === 0
+    res.send({
+        resultado: par ? 'par' : 'ímpar'
     })
 })
 
