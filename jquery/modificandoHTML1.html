@@ -13,8 +13,31 @@
     <div id='conteudo1'></div>
     <div id='conteudo2'></div>
     <div id='conteudo3'></div>
-
+    <div>Sem ID!</div>
+    
     <script>
-        // ...
+        //Conteudo 1:
+        $('#conteudo1').append('<p>1</p>')
+        
+        //Conteudo 2:
+        const elementos = [
+            $('<li></li>').append('Arroz'),
+            $('<li>').append('Feijão'),
+            $('<li>').append('Carne')
+        ]
+        
+        const lista = $('<ul><li>Sorvete</li></ul>').prepend(elementos)
+        $('#conteudo2').append(lista)
+        
+        //Conteudo 3:
+        $('#conteudo3').append('<li>1</li>', '<li>2</li>')
+        $('#conteudo3').append(['<li>3</li>', '<li>4</li>'])
+                .prepend('<li>5</li>')
+        
+        $('#conteudo3').html('<li>123</li>')
+        $('#conteudo3').text('<li>456</li>')
+        
+        //Alterando todos que tenham atributo ID:
+        $('div[id]').html('<strong>Todos!</strong>')
     </script>
 </body>
