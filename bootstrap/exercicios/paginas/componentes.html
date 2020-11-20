@@ -144,6 +144,22 @@
 <hr>
 
 <!-- Tooltip -->
+<div>
+    <div class="alert alert-warning">
+        Precisa chamar uma função JS!
+        <strong>E agora?</strong>
+    </div>
+    
+    <button 
+        class="btn btn-danger" 
+        data-toggle="tooltip" 
+        data-placement="top" 
+        title="Pense antes"
+    >
+        Excluir
+    </button>
+</div>
+
 
 <h1 class="mt-5">6. Slider -
     <small>
@@ -164,5 +180,6 @@
 <!-- Accordion -->
 
 <script>
-    // ...
+    // Funciona?
+    $('[data-toggle="tooltip"]').tooltip()
 </script>
