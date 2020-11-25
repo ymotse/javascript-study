@@ -1,9 +1,10 @@
 import $ from 'jquery'
+import { onLoadHtmlSuccess } from '../core/includes'
 
 const duration = 600
 
 function filterByCity(city) {
-    $(`[wm-city]`),each(function(i, e) {
+    $('[wm-city]').each(function(i, e) {
         const isTarget = $(this).attr('wm-city') === city || city === null
         
         if(isTarget) {
@@ -26,13 +27,13 @@ $.fn.cityButtons = function() {
     
     const btns = Array.from(cities).map(city => {
         const btn = $('<button>')
-        .addClass(['btn', 'btn-info']).html(city)
+            .addClass(['btn', 'btn-info']).html(city)
         btn.click(e => filterByCity(city))
         return btn
     })
     
     const btnAll = $('<button>')
-    .addClass(['btn', 'btn-info', 'active']).html('Todas')
+        .addClass(['btn', 'btn-info', 'active']).html('Todas')
     btnAll.click(e => filterByCity(null))
     btns.push(btnAll)
     
@@ -43,4 +44,6 @@ $.fn.cityButtons = function() {
     return this
 }
 
-$('[wm-city-buttons]').cityButtons()
+onLoadHtmlSuccess(function() {
+    $('[wm-city-buttons]').cityButtons()
+})
