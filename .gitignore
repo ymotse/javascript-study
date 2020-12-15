@@ -7,4 +7,4 @@
 /gulp/node_modules/
 /gulp/spa/node_modules/
 /react/crud/backend/node_modules/
-*/node_modules/
+/angular/crud/backend/node_modules/
