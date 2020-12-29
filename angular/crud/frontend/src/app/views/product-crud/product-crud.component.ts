@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCrudComponent implements OnInit {
 
+    propLegal = "queLegalID"
+    
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  fazerAlgo() : void {
+      console.log('Fazer Algo!!')
+  }
+  
 }
