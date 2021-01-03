@@ -1,7 +1,14 @@
 const express = require('express')
 const app = express()
 
-app.use('/opa', (req, res) => {
+app.use('/opa', (req, res, next) => {
+    console.log('Antes...')
+    next()
+})
+
+
+app.use('/opa', (req, res, next) => {
+    console.log('Durante...')
     
     res.json({
         data: [
@@ -23,7 +30,14 @@ app.use('/opa', (req, res) => {
     
     
     // res.send('<h1>Estou bem!</h1>')
+    
+    next()
 })
+
+app.use('/opa', (req, res) => {
+    console.log('Depois.')
+})
+
 
 app.listen(3000, () => {
     console.log('Backend executando...')
