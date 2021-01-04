@@ -23,6 +23,7 @@ db.estados.insert({
     sigla: "RJ",
     regiao: "Sudeste",
     cidades: [{
+        _id: ObjectId(),
         nome: "Niterói",
         area: 133.9,
         populacao: 487562
@@ -92,3 +93,65 @@ db.estados.aggregate([
     { $match: {"cidades.nome": "Guarulhos"} },
     { $project: {_id: "$cidades._id"} },
 ]).pretty()
+
+db.estados.update({sigla: "SP"}, {$set: {populacao: 45340000}})
+
+db.estados.update({sigla: "AL"}, {$set: {cidades: [{nome: "Sergipe"}]}})
+
+db.estados.update(
+    {sigla: "SP"},
+    {$push: {cidades: {nome: "Santos", populacao: 433966}}}
+)
+
+db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})
+
+db.estados.remove({sigla: "AC"})
+
+db.estados.remove({populacao: {$exists: false}}, 1)
+
+db.estados.update(
+    {sigla: "RJ"},
+    {$set: {populacao: 16325000}}
+)
+
+db.estados.remove({populacao: {$lt: 20000000}})
+
+db.empresas.insert({
+    nome: "Bradesco",
+    estadoId: ObjectId("5ff372c6660edca148649450")
+})
+
+db.empresas.find().pretty()
+
+db.empresas.insert({
+    nome: "Vale",
+    cidadeId: ObjectId("5ff372c6660edca14864944e")
+})
+
+db.empresas.aggregate([
+    {$match: {nome: "Bradesco"}},
+    {$lookup: {
+        from: "estados",
+        localField: "estadoId",
+        foreignField: "_id",
+        as: "estado"
+    }},
+    {$unwind: "$estado"}
+]).pretty()
+
+db.empresas.aggregate([
+    {$match: {nome: "Vale"}},
+    {$lookup: {
+        from: "estados",
+        localField: "cidadeId",
+        foreignField: "cidades.id",
+        as: "estado"
+    }},
+    {$unwind: "$estado"},
+    {$unwind: "$estado.cidades"},
+    {$addFields: {mesmaCidade: {$cmp: ["$estado.cidades._id", "$cidadeId"]}}},
+    {$match: {mesmaCidade: 0}}
+]).pretty()
+
+
+{$match: {"estado.cidades._id": "$cidadeId"}}
