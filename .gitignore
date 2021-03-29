@@ -1,5 +1,7 @@
 /node_modules/
 /node/funcionarios/node_modules/
+/node/projeto/node_modules/
+/node/node_modules/
 /webhtml/exercicios/form/node_modules/
 /bootstrap/exercicios/node_modules/
 /bootstrap/projeto-galeria/node_modules/
@@ -9,3 +11,6 @@
 /react/crud/backend/node_modules/
 /angular/crud/backend/node_modules/
 /exercicios-express/node_modules/
+
+/knowledge/versao-final/
+/knowledge/versao-inicial/frontend/
